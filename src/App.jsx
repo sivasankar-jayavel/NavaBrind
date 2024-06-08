@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-
-import * as math from "mathjs";
-
+import {useState } from "react";
 import "./App.css";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 
+// import * as math from "mathjs";
+
 const App = () => {
+
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
-
   const [darkMode, setDarkMode] = useState(false);
 
 
@@ -19,12 +18,6 @@ const App = () => {
 
   const addToText = (val) => {
     setText((text) => [...text, val + ""]);
-  };
-
-  const calculateResult = () => {
-    const input = text.join(""); // Remove commas
-
-    setResult(math.evaluate(input));
   };
 
   const resetInput = () => {
@@ -38,48 +31,68 @@ const App = () => {
 
   const buttonColor = "#f2a33c";
 
+  const calculateResult = () => {
+
+    const input = text.join(""); // Remove commas
+    // setResult(math.evaluate(input));
+
+    try {
+      const enteredInput = input.replace(/[^-()\d/*+.]/g, ""); 
+      const calculatedResult = new Function(`return ${enteredInput}`)(); // Evaluate the expression
+      setResult(formatNumber(calculatedResult));
+    } catch (error) {
+      setResult("Error");
+    }
+    
+  };
+
+  // Function to format the number with commas
+  const formatNumber = (number) => {
+    return number.toLocaleString();
+  };
+
   return (
-    <div className={`App ${darkMode ? "dark" : "light"}`} style={{ backgroundColor: darkMode ? "black" : "white" }}>
+    <div className={`App ${darkMode ? "dark" : "light"}`} >
       <div className={`calc-wrapper ${darkMode ? "dark" : "light"}`}>
         <div className="result-wrapper">
           <button className="toggle-button" onClick={toggleTheme}>
             {darkMode ? "🌞 Light" : "🌜 Dark"}
           </button>
-          <Input text={text} result={result} />
+          <Input text={text} result={result} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="AC" color="red" handleClick={resetInput} />
-          <Button symbol="=" color="red" handleClick={calculateResult} />
+          <Button symbol="AC" color="red" handleClick={resetInput}  darkMode={darkMode}/>
+          <Button symbol="=" color="red" handleClick={calculateResult} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="7" handleClick={addToText} />
-          <Button symbol="8" handleClick={addToText} />
-          <Button symbol="9" handleClick={addToText} />
-          <Button symbol="*" color={buttonColor} handleClick={addToText} />
+          <Button symbol="7" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="8" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="9" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="*" color={buttonColor} handleClick={addToText} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="4" handleClick={addToText} />
-          <Button symbol="5" handleClick={addToText} />
-          <Button symbol="6" handleClick={addToText} />
-          <Button symbol="/" color={buttonColor} handleClick={addToText} />
+          <Button symbol="4" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="5" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="6" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="/" color={buttonColor} handleClick={addToText} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="1" handleClick={addToText} />
-          <Button symbol="2" handleClick={addToText} />
-          <Button symbol="3" handleClick={addToText} />
-          <Button symbol="+" color={buttonColor} handleClick={addToText} />
+          <Button symbol="1" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="2" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="3" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="+" color={buttonColor} handleClick={addToText} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="0" handleClick={addToText} />
-          <Button symbol="00" handleClick={addToText} />
-          <Button symbol="." handleClick={addToText} />
-          <Button symbol="-" color={buttonColor} handleClick={addToText} />
+          <Button symbol="0" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="00" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="." handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="-" color={buttonColor} handleClick={addToText} darkMode={darkMode}/>
         </div>
         <div className="row">
-          <Button symbol="(" handleClick={addToText} />
-          <Button symbol=")" handleClick={addToText} />
-          <Button symbol="," handleClick={addToText} />
-          <Button symbol="DEL" color="red" handleClick={deleteInput} />
+          <Button symbol="(" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol=")" handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="," handleClick={addToText} darkMode={darkMode}/>
+          <Button symbol="DEL" color="red" handleClick={deleteInput} darkMode={darkMode}/>
         </div>
       </div>
     </div>

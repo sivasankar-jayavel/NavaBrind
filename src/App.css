@@ -57,6 +57,30 @@ body.dark {
 
 }
 
+
+.button-wrapper {
+  background-color: #f4e5e5;
+  color: rgb(8, 7, 7);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 5px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.calc-wrapper.light .button-wrapper {
+  background-color: #f4e5e5;
+  color: rgb(8, 7, 7);
+}
+
+.calc-wrapper.dark .button-wrapper {
+  background-color: #333;
+  color: white;
+}
+
+
 .toggle-button {
   position: absolute;
   top: 10px;

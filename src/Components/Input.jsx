@@ -1,16 +1,16 @@
 import "../CSS/Input.css";
 
-const Input = ({ text, result }) => {
+const Input = ({ text, result ,darkMode }) => {
+  const inputClass = darkMode ? "input-wrapper dark" : "input-wrapper light";
   return (
-    <div className="input-wrapper">
-      <div className="result">
-        <h1>{result}</h1>
-      </div>
-
-      <div className="text">
-        <h3>{text}</h3>
-      </div>
+    <div className={inputClass}>
+    <div className="input">
+      {text}
     </div>
+    <div className="result">
+      {result}
+    </div>
+  </div>
   );
 };
 

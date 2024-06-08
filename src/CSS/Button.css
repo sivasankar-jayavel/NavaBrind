@@ -1,23 +1,42 @@
 .button-wrapper {
-    height: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    background-color: #e0e0e0;
-    color: white;
-    flex: 1;
-    border: none;
-    border-radius: 8px;
-    margin: .5px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 5px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
 
-  
-  }
+.button-wrapper.light {
+  background-color: #f4e5e5;
+  color: rgb(8, 7, 7);
+}
 
-  .button-wrapper:hover {
-    background-color: #d4d4d4;
-  }
+.button-wrapper.dark {
+  background-color: #333;
+  color: white;
+}
+
+
+/* .button-wrapper {
+  background-color: #f4e5e5;
+  color: rgb(8, 7, 7);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 5px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+} */
+
+/* .calc-wrapper.light .button-wrapper {
+  background-color: #f4e5e5;
+  color: rgb(8, 7, 7);
+}
+
+.calc-wrapper.dark .button-wrapper {
+  background-color: #333;
+  color: white;
+} */
