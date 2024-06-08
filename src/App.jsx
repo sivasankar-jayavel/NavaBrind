@@ -52,6 +52,7 @@ const App = () => {
   };
 
   return (
+    
     <div className={`App ${darkMode ? "dark" : "light"}`} >
       <div className={`calc-wrapper ${darkMode ? "dark" : "light"}`}>
         <div className="result-wrapper">
@@ -96,6 +97,7 @@ const App = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
